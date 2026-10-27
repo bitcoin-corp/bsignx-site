@@ -1,0 +1,12 @@
+{
+  "name": "bsignx-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "html-validate index.html",
+    "build": "pnpm lint && node scripts/check.mjs"
+  },
+  "devDependencies": {
+    "html-validate": "8.18.2"
+  }
+}
