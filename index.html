@@ -170,6 +170,123 @@ html,body{overflow-x:clip}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 .film{margin:40px 0 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--edge);aspect-ratio:1376/928;max-height:520px;background:#0d0e11}
 .film video{width:100%;height:100%;object-fit:cover;display:block}
+/* hero film: say, write, exchange, sign, swap */
+.flm{position:relative;justify-self:center;width:100%;max-width:460px;container-type:inline-size}
+.flm::before{content:"";position:absolute;inset:-8%;z-index:-1;background:radial-gradient(closest-side,rgba(245,184,0,.16),transparent 70%)}
+.stg{position:relative;aspect-ratio:1/1.02;background:linear-gradient(180deg,#0f1014,#08090b);border:1px solid var(--edge);border-radius:22px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(245,184,0,.35)}
+.stg *{box-sizing:border-box}
+.ph{position:absolute;top:5cqw;width:39cqw;height:56cqw;border-radius:6cqw;background:#16171c;border:1px solid #2a2c33;padding:2cqw;box-shadow:0 2cqw 6cqw -2cqw #000,inset 0 0 0 .6cqw #0b0c0f}
+.ph.a{left:5cqw}.ph.b{right:5cqw}
+.ph .scr{position:relative;height:100%;border-radius:4.4cqw;background:#050506;overflow:hidden}
+.ph .who{position:absolute;top:2.4cqw;left:0;right:0;text-align:center;font:600 2.7cqw/1 var(--hf);color:var(--muted);letter-spacing:.04em;z-index:3}
+.ly{position:absolute;inset:7cqw 2.4cqw 2.4cqw;opacity:0;transform:translateY(1.5cqw);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+/* layer visibility per state */
+.stg[data-s="1"] .a .l-voice,
+.stg[data-s="2"] .a .l-doc,.stg[data-s="3"] .a .l-doc,.stg[data-s="4"] .a .l-doc,.stg[data-s="5"] .a .l-doc,
+.stg[data-s="6"] .l-sign,.stg[data-s="7"] .l-sign,
+.stg[data-s="1"] .b .l-wait,.stg[data-s="2"] .b .l-wait,
+.stg[data-s="3"] .b .l-doc,.stg[data-s="4"] .b .l-doc,.stg[data-s="5"] .b .l-doc{opacity:1;transform:none}
+/* voice */
+.mic{display:flex;align-items:center;justify-content:center;gap:.8cqw;height:13cqw;margin-top:3cqw}
+.mic i{display:block;width:1.1cqw;height:3cqw;border-radius:1cqw;background:var(--gold-hi)}
+.stg[data-s="1"] .mic i{animation:wv .9s ease-in-out infinite}
+.mic i:nth-child(2){animation-delay:-.7s!important}.mic i:nth-child(3){animation-delay:-.2s!important}.mic i:nth-child(4){animation-delay:-.5s!important}.mic i:nth-child(5){animation-delay:-.1s!important}.mic i:nth-child(6){animation-delay:-.6s!important}.mic i:nth-child(7){animation-delay:-.3s!important}
+@keyframes wv{0%,100%{height:2cqw;opacity:.6}50%{height:11cqw;opacity:1}}
+.tx{font:500 3cqw/1.45 var(--bf);color:var(--ink);margin-top:2cqw;min-height:13cqw}
+.tx::after{content:"";display:inline-block;width:.5cqw;height:3cqw;margin-left:.3cqw;vertical-align:-.4cqw;background:var(--gold-hi);animation:cur 1s steps(1) infinite}
+@keyframes cur{50%{opacity:0}}
+.lbl{font:500 2.2cqw/1 'IBM Plex Mono',monospace;color:var(--dim);letter-spacing:.06em}
+/* paper */
+.pp{background:#fffaf0;color:#17140c;border-radius:2.4cqw;padding:2.4cqw;font-size:2.5cqw;line-height:1.3}
+.pp b{display:block;font:600 3.3cqw/1.15 'Fraunces',Georgia,serif;margin:.6cqw 0 1cqw}
+.pp small{font:500 1.8cqw/1 'IBM Plex Mono',monospace;color:#8a6300;letter-spacing:.06em}
+.pp .t{display:flex;justify-content:space-between;padding:1cqw 0;border-top:1px solid #eadfc4}
+.pp .ln{height:1cqw;border-radius:1cqw;background:#e9dfc9;margin-top:1.2cqw}
+.stg[data-s="2"] .a .pp>*{animation:typ .5s var(--ease) both}
+.stg[data-s="2"] .a .pp>*:nth-child(2){animation-delay:.3s}.stg[data-s="2"] .a .pp>*:nth-child(3){animation-delay:.7s}.stg[data-s="2"] .a .pp>*:nth-child(4){animation-delay:1s}.stg[data-s="2"] .a .pp>*:nth-child(5){animation-delay:1.3s}.stg[data-s="2"] .a .pp>*:nth-child(6){animation-delay:1.6s}.stg[data-s="2"] .a .pp>*:nth-child(7){animation-delay:1.8s}
+@keyframes typ{from{opacity:0;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+.chip{display:inline-block;font:700 2cqw/1 var(--hf);letter-spacing:.1em;color:#000;background:var(--gold);padding:1cqw 1.4cqw;border-radius:1.2cqw;margin-bottom:1.4cqw;opacity:0}
+.pr{position:relative;display:inline-block}
+.pr .o,.pr .n{transition:opacity .3s}
+.pr .n{position:absolute;right:0;opacity:0;background:#ffe58a;border-radius:.8cqw;padding:0 .6cqw;font-weight:600}
+.stg[data-s="4"] .chip,.stg[data-s="5"] .chip{opacity:1}
+.stg[data-s="4"] .pr .o,.stg[data-s="5"] .pr .o{opacity:.45;text-decoration:line-through;transform:translateX(-7cqw);display:inline-block}
+.stg[data-s="4"] .pr .n,.stg[data-s="5"] .pr .n{opacity:1}
+.ok{margin-top:1.6cqw;font:600 2.4cqw/1 var(--hf);color:var(--gold-hi);opacity:0;transition:opacity .4s}
+.stg[data-s="5"] .ok{opacity:1}
+.wait{display:grid;place-items:center;height:36cqw;color:var(--dim);font:500 2.6cqw/1.4 var(--bf);text-align:center}
+.wait i{display:block;width:6cqw;height:6cqw;margin:0 auto 2cqw;border-radius:50%;border:.5cqw solid #2a2c33;border-top-color:var(--gold-hi);animation:spin 1.2s linear infinite}
+@keyframes spin{to{transform:rotate(1turn)}}
+/* signature */
+.sp{background:#fffaf0;border-radius:2.4cqw;padding:2cqw;color:#17140c}
+.sp svg{display:block;width:100%;height:auto}
+.sp .base{stroke:#d9ccaf;stroke-width:1}
+.sp .ink{fill:none;stroke:#1b2a6b;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.sp .tip{fill:rgba(245,184,0,.55);stroke:var(--gold-hi);stroke-width:1;opacity:0;offset-rotate:0deg}
+.sp p{margin:1cqw 0 0;font:500 2.2cqw/1.2 var(--bf);color:#6b5c3f}
+.stg[data-s="6"] .a .ink,.stg[data-s="7"] .a .ink{animation:drw 1.6s cubic-bezier(.5,0,.3,1) .2s forwards}
+.stg[data-s="6"] .b .ink,.stg[data-s="7"] .b .ink{animation:drw 1.4s cubic-bezier(.5,0,.3,1) 1.9s forwards}
+.stg[data-s="7"] .ink{animation:none!important;stroke-dashoffset:0}
+.stg[data-s="6"] .a .tip{animation:tip 1.6s cubic-bezier(.5,0,.3,1) .2s both}
+.stg[data-s="6"] .b .tip{animation:tip 1.4s cubic-bezier(.5,0,.3,1) 1.9s both}
+@keyframes drw{to{stroke-dashoffset:0}}
+@keyframes tip{0%{opacity:1;offset-distance:0%}92%{opacity:1}100%{opacity:0;offset-distance:100%}}
+.sgd{margin-top:1.4cqw;font:600 2.4cqw/1 var(--hf);color:var(--gold-hi);opacity:0}
+.stg[data-s="6"] .a .sgd{animation:fade .3s 1.9s both}.stg[data-s="6"] .b .sgd{animation:fade .3s 3.4s both}.stg[data-s="7"] .sgd{opacity:1}
+.sl{margin:3cqw 0 0;padding:2cqw;border-radius:2cqw;border:1px solid var(--edge-gold);background:rgba(245,184,0,.08);font:500 2.2cqw/1.4 var(--bf);color:var(--muted);opacity:0;transition:opacity .5s .3s}
+.sl b{display:block;color:var(--ink);font:600 2.5cqw/1.3 var(--hf)}
+.stg[data-s="7"] .sl{opacity:1}
+/* flying contract between phones */
+.fly{position:absolute;top:27cqw;left:50%;width:15cqw;margin-left:-7.5cqw;padding:1.6cqw;border-radius:1.6cqw;background:#fffaf0;box-shadow:0 2cqw 5cqw -1cqw rgba(0,0,0,.8),0 0 0 1px var(--edge-gold);opacity:0;z-index:5}
+.fly i{display:block;height:.8cqw;border-radius:1cqw;background:#e2d5b8;margin:.7cqw 0}
+.fly i:first-child{width:60%;background:#17140c;margin-top:0}
+.fly .c{position:absolute;top:-2.6cqw;left:50%;transform:translateX(-50%);font:700 1.7cqw/1 var(--hf);letter-spacing:.08em;color:#000;background:var(--gold);padding:.7cqw 1cqw;border-radius:1cqw;white-space:nowrap;opacity:0}
+.stg[data-s="3"] .fly{animation:flyR 1.3s var(--ease) .2s both}
+.stg[data-s="4"] .fly{animation:flyL 1.3s var(--ease) .1s both}
+.stg[data-s="4"] .fly .c{opacity:1}
+.stg[data-s="5"] .fly{animation:flyR 1.2s var(--ease) .1s both}
+@keyframes flyR{0%{opacity:0;transform:translate(-26cqw,2cqw) scale(.7) rotate(-6deg)}15%{opacity:1}50%{transform:translate(0,-6cqw) scale(1) rotate(0)}85%{opacity:1}100%{opacity:0;transform:translate(26cqw,2cqw) scale(.7) rotate(6deg)}}
+@keyframes flyL{0%{opacity:0;transform:translate(26cqw,2cqw) scale(.7) rotate(6deg)}15%{opacity:1}50%{transform:translate(0,-6cqw) scale(1) rotate(0)}85%{opacity:1}100%{opacity:0;transform:translate(-26cqw,2cqw) scale(.7) rotate(-6deg)}}
+.arc{position:absolute;top:22cqw;left:30cqw;width:40cqw;height:12cqw;opacity:0;transition:opacity .4s}
+.arc path{fill:none;stroke:var(--edge-gold);stroke-width:1;stroke-dasharray:3 4}
+.stg[data-s="3"] .arc,.stg[data-s="4"] .arc,.stg[data-s="5"] .arc{opacity:1}
+/* chain + swap */
+.chn{position:absolute;left:5cqw;right:5cqw;bottom:5cqw;height:31cqw}
+.blks{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:0;height:10cqw}
+.blk{flex:0 0 auto;width:12cqw;height:9cqw;border-radius:1.6cqw;border:1px solid #2a2c33;background:#111216;display:grid;place-items:center;font:500 1.8cqw/1 'IBM Plex Mono',monospace;color:var(--dim)}
+.lnk{flex:1 1 0;height:1px;background:#2a2c33;min-width:1.4cqw}
+.blk.nw{width:15cqw;border-color:var(--gold);background:linear-gradient(180deg,#2a2104,#141004);color:var(--gold-hi);opacity:.15;transform:translateY(-4cqw) scale(.85);transition:opacity .5s,transform .7s var(--ease)}
+.blk.nw svg{width:3.4cqw;height:3.4cqw;display:block;margin:0 auto .6cqw}
+.blk.nw span{display:block;text-align:center}
+.stg[data-s="7"] .blk.nw{opacity:1;transform:none;box-shadow:0 0 4cqw -1cqw rgba(245,184,0,.7)}
+.swp{position:absolute;left:0;right:0;top:0;height:10cqw;border-radius:2cqw;border:1px solid var(--edge);background:#0b0c0f;opacity:.25;transition:opacity .5s}
+.stg[data-s="7"] .swp{opacity:1;border-color:var(--edge-gold)}
+.swp .lane{position:absolute;left:3cqw;right:3cqw;height:4cqw}
+.swp .l1{top:1cqw}.swp .l2{bottom:1cqw}
+.swp .lane::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#24262c}
+.swp .tok,.swp .cash{position:absolute;top:0;height:4cqw;padding:0 1.6cqw;border-radius:2cqw;display:flex;align-items:center;font:600 2.2cqw/1 var(--hf);white-space:nowrap}
+.swp .tok{left:0;background:#1d1e24;color:var(--ink);border:1px solid #33353d}
+.swp .cash{right:0;background:var(--grad);color:#000}
+.stg[data-s="7"] .swp .tok{animation:mvR 1.6s var(--ease) .7s both}
+.stg[data-s="7"] .swp .cash{animation:mvL 1.6s var(--ease) .7s both}
+@keyframes mvR{to{left:100%;transform:translateX(-100%)}}
+@keyframes mvL{to{right:100%;transform:translateX(100%)}}
+.swp .end{position:absolute;top:50%;transform:translateY(-50%);font:500 1.9cqw/1 var(--bf);color:var(--dim);z-index:-1}
+.tag1{position:absolute;left:0;right:0;top:13.4cqw;margin:0;text-align:center;font:500 2.3cqw/1 'IBM Plex Mono',monospace;color:var(--muted);opacity:0;transition:opacity .5s .9s}
+.stg[data-s="7"] .tag1{opacity:1;color:var(--gold-hi)}
+/* beat rail */
+.rail{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.rail li{position:relative;padding-top:10px;font:600 12px/1.25 var(--hf);color:var(--dim);transition:color .3s}
+.rail li::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px;background:#22242a}
+.rail li::after{content:"";position:absolute;top:0;left:0;height:2px;width:0;border-radius:2px;background:var(--gold-hi)}
+.rail li.on{color:var(--ink)}
+.rail li.on::after{width:100%;transition:width var(--dur,3s) linear}
+.rail li.dn::after{width:100%}
+.rail li span{display:block;font-weight:500;color:var(--dim);font-size:11px}
+@media (prefers-reduced-motion:reduce){
+  .stg *{animation:none!important;transition:none!important}
+  .rail li{color:var(--ink)}.rail li::after{width:100%}
+}
 </style>
 </head>
 <body>
@@ -197,21 +314,33 @@ html,body{overflow-x:clip}
     <p class="hint">Signing and sealing work <span class="ink">today</span>. Counteroffer versions and voice drafting are <span class="ink">coming</span>.</p>
   </div>
 
-  <div class="doc" role="img" aria-label="An example contract card marked COUNTEROFFER. A fictional logo commission: the price changed from 400 to 450 dollars. Signed by the sender only.">
-    <div class="chipbar"><b>COUNTEROFFER #2</b><span>from $sam · replaces their last offer</span></div>
-    <div class="paper">
-      <small>LOGO-COMMISSION.NDS.HTML · V3 · EXAMPLE</small>
-      <h3>Logo design commission</h3>
-      <div class="term"><span>Price</span><span><del>$400</del> <ins>$450</ins></span></div>
-      <div class="term"><span>Delivery</span><span>14 days</span></div>
-      <div class="term"><span>Rights</span><span>Full transfer on payment</span></div>
+  <div class="flm">
+    <div class="stg" data-s="7" role="img" aria-label="Animation of a fictional deal. You say: draft a logo commission for $sam, 450 dollars, 14 days. b writes the contract. It goes to $sam, who sends back a COUNTEROFFER raising the price from 400 to 450 dollars, and the agreed version goes back across. Both sign with a finger, like ink on paper. The contract is sealed and encrypted into a block on chain while tokens and cash swap in one transaction.">
+      <div class="ph a"><div class="scr"><span class="who">You</span>
+        <div class="ly l-voice"><span class="lbl">b IS LISTENING</span><div class="mic"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p class="tx" data-say="Draft a logo commission for $sam, $450, 14 days."></p></div>
+        <div class="ly l-doc"><span class="chip">COUNTEROFFER #2</span><div class="pp"><small>B DRAFTED · V1</small><b>Logo design commission</b><div class="t"><span>Price</span><span class="pr"><span class="o">$400</span><span class="n">$450</span></span></div><div class="t"><span>Delivery</span><span>14 days</span></div><div class="t"><span>Rights</span><span>On payment</span></div><div class="ln"></div><div class="ln" style="width:60%"></div></div><p class="ok">&#10003; Both agree v3</p></div>
+        <div class="ly l-sign"><div class="sp"><svg viewBox="0 0 120 50"><line class="base" x1="6" y1="40" x2="114" y2="40"/><path class="ink" pathLength="1" d="M10 34c6-18 10-26 13-24s-6 26-2 26 10-22 15-20-3 18 2 18 7-12 11-12 1 10 6 9 6-9 10-9 2 8 6 8c6 0 12-10 18-12 5-2 9 1 14 0"/><circle class="tip" r="3" style="offset-path:path('M10 34c6-18 10-26 13-24s-6 26-2 26 10-22 15-20-3 18 2 18 7-12 11-12 1 10 6 9 6-9 10-9 2 8 6 8c6 0 12-10 18-12 5-2 9 1 14 0')"/></svg><p>Signed by finger, v3</p></div><p class="sgd">&#10003; You signed</p><p class="sl"><b>v3 · $450 · 14 days</b>Sealed · encrypted to you both</p></div>
+      </div></div>
+      <div class="ph b"><div class="scr"><span class="who">$sam</span>
+        <div class="ly l-wait"><div class="wait"><div><i></i>Waiting for<br>a contract</div></div></div>
+        <div class="ly l-doc"><span class="chip">COUNTEROFFER #2</span><div class="pp"><small>FROM YOU · V1</small><b>Logo design commission</b><div class="t"><span>Price</span><span class="pr"><span class="o">$400</span><span class="n">$450</span></span></div><div class="t"><span>Delivery</span><span>14 days</span></div><div class="t"><span>Rights</span><span>On payment</span></div></div><p class="ok">&#10003; Both agree v3</p></div>
+        <div class="ly l-sign"><div class="sp"><svg viewBox="0 0 120 50"><line class="base" x1="6" y1="40" x2="114" y2="40"/><path class="ink" pathLength="1" d="M12 30c4-10 12-20 16-18s-10 22-4 22 12-24 18-22-8 20-2 20 10-14 16-14-4 12 2 12 10-10 16-10 2 8 8 8 14-4 26-6"/><circle class="tip" r="3" style="offset-path:path('M12 30c4-10 12-20 16-18s-10 22-4 22 12-24 18-22-8 20-2 20 10-14 16-14-4 12 2 12 10-10 16-10 2 8 8 8 14-4 26-6')"/></svg><p>Signed by finger, v3</p></div><p class="sgd">&#10003; $sam signed</p><p class="sl"><b>v3 · $450 · 14 days</b>Sealed · encrypted to you both</p></div>
+      </div></div>
+      <svg class="arc" viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M0 28C25 0 75 0 100 28"/></svg>
+      <div class="fly"><span class="c">COUNTER $450</span><i></i><i></i><i></i><i></i></div>
+      <div class="chn">
+        <div class="swp"><div class="lane l1"><span class="tok">Tokens &#8594; $sam</span></div><div class="lane l2"><span class="cash">$450 &#8592; to you</span></div></div>
+        <p class="tag1">1 transaction · sealed · encrypted</p>
+        <div class="blks"><span class="blk">…</span><span class="lnk"></span><span class="blk">a91e</span><span class="lnk"></span><span class="blk">5c02</span><span class="lnk"></span><span class="blk nw"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>3b7d…c09f</span></span></div>
+      </div>
     </div>
-    <div class="sigs">
-      <div class="sig"><span>$sam</span><span class="ok">&#10003; signed this version</span></div>
-      <div class="sig"><span>You</span><span class="no">You have NOT signed this</span></div>
-    </div>
-    <div class="doc-a"><span class="p">Sign &amp; pay</span><span>Counter</span><span>Refuse</span></div>
-    <p class="hash">parent 9f2c…a41e · this 3b7d…c09f</p>
+    <ol class="rail">
+      <li data-b="1">Say it<span>to b, out loud</span></li>
+      <li data-b="2">b writes it<span>a real draft</span></li>
+      <li data-b="3">Exchange<span>offer, counter</span></li>
+      <li data-b="4">Sign it<span>finger, like ink</span></li>
+      <li data-b="5">Swap it<span>on chain</span></li>
+    </ol>
   </div>
 </div>
 
@@ -364,6 +493,21 @@ html,body{overflow-x:clip}
 if(matchMedia('(prefers-reduced-motion: reduce)').matches){return}
 if(!('IntersectionObserver' in window)){v.preload='auto';v.play();return}
 var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){v.preload='auto';v.play().catch(function(){})}else v.pause()})},{rootMargin:'200px'});io.observe(v)})();
+</script>
+<script>
+(function(){var s=document.querySelector('.stg');if(!s)return;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var tx=s.querySelector('.tx'),say=tx.getAttribute('data-say'),rail=[].slice.call(document.querySelectorAll('.rail li'));
+// [state, ms, beat]
+var T=[[1,3400,1],[2,2600,2],[3,1700,3],[4,1600,3],[5,1600,3],[6,3900,4],[7,3600,5]],i=0,tm,ty,vis=true;
+function beat(b,d){rail.forEach(function(l){var n=+l.getAttribute('data-b');l.classList.toggle('dn',n<b);if(n!==b)l.classList.remove('on')});
+var cur=rail[b-1];if(!cur.classList.contains('on')){cur.style.setProperty('--dur',d+'ms');cur.classList.remove('on');void cur.offsetWidth;cur.classList.add('on')}}
+function step(){var t=T[i];s.setAttribute('data-s',t[0]);var d=0,j=i;while(j<T.length&&T[j][2]===t[2]){d+=T[j][1];j++}
+if(i===0||T[i-1][2]!==t[2])beat(t[2],d);
+if(t[0]===1){var k=0;tx.textContent='';clearInterval(ty);ty=setInterval(function(){tx.textContent=say.slice(0,++k);if(k>=say.length)clearInterval(ty)},48)}
+tm=setTimeout(function(){i=(i+1)%T.length;if(vis)step();else tm=null},t[1])}
+if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis&&!tm)step()}).observe(s);
+step()})();
 </script>
 </body>
 </html>
