@@ -1,5 +1,7 @@
 # bSignX.com
 
+**Licence: [Open BSV License version 4](LICENSE)**, © The Bitcoin Corporation Ltd. (GitHub labels it "Other" because it is not on GitHub's standard licence list.)
+
 Marketing site for **bSignX**, contracts both sides sign. By The Bitcoin Corporation Ltd. Static HTML, same house pattern as bsharesx-site / bmintx-site.
 
 ## The product
